@@ -11,7 +11,7 @@
         /* Global Styles */
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://wallpapers.com/images/high/lavender-aesthetic-laptop-q9lku1ylo9m6frut.webp'); /* Set background image */
+            background-image: url('https://wallpapers.com/images/high/lavender-aesthetic-laptop-q9lku1ylo9m6frut.webp');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -32,12 +32,11 @@
             width: 90%;
             max-width: 800px;
             text-align: center;
-            color: #000; /* Set text color to black for better contrast */
         }
 
         h1 {
-            font-family: 'Quicksand', sans-serif; /* Set Quicksand font for title */
-            color: #6A0DAD; /* Purple color for the title */
+            font-family: 'Quicksand', sans-serif;
+            color: #6A0DAD;
             margin-bottom: 20px;
         }
 
@@ -51,13 +50,8 @@
             padding: 10px;
             text-align: center;
             border: 1px solid #555;
-            color: #000; /* Set text color to black for better contrast */
+            color: #333; /* Changed text color for better visibility */
             width: 20%;
-        }
-
-        th {
-            background-color: #E6E6FA; /* Light purple color for table headers */
-            color: #000; /* Black text for better contrast */
         }
 
         button {
@@ -77,11 +71,11 @@
         }
 
         .delete-row {
-            background-color: transparent; /* Remove background color */
-            color: red; /* Set color to red */
-            font-weight: bold;
+            background: none; /* No background color */
+            color: red; /* Red text color */
+            font-weight: bold; /* Bold text */
             border: none; /* Remove border */
-            cursor: pointer;
+            cursor: pointer; /* Pointer cursor */
         }
 
         #gpaDisplay {
@@ -101,6 +95,11 @@
 
         input[type="checkbox"] {
             transform: scale(1.3);
+        }
+
+        th {
+            background-color: #DDA0DD; /* Light purple color */
+            color: white;
         }
 
         select:hover, input[type="number"]:hover, input[type="text"]:hover {
@@ -200,6 +199,7 @@
                     checkbox.checked = false;
                 }
             });
+            document.getElementById('gpaDisplay').textContent = 'Your GPA: 0.00'; // Reset GPA display
         }
 
         function calculateGPA() {
@@ -213,14 +213,14 @@
                 const grade = row.querySelector('.course-grade').value;
                 const gradeValue = convertGradeToPoints(grade);
 
-                if ((!isNaN(credits) && checkbox.checked) || (!checkbox.checked && !isNaN(credits))) {
+                if (checkbox.checked) {
                     totalCredits += credits;
                     totalPoints += gradeValue * credits;
                 }
             });
 
-            const gpa = totalPoints / totalCredits;
-            document.getElementById('gpaDisplay').textContent = !isNaN(gpa) && totalCredits > 0 ? `Your GPA: ${gpa.toFixed(2)}` : "Your GPA: 0.00";
+            const gpa = totalCredits > 0 ? totalPoints / totalCredits : 0;
+            document.getElementById('gpaDisplay').textContent = `Your GPA: ${gpa.toFixed(2)}`;
         }
 
         function convertGradeToPoints(grade) {
@@ -234,4 +234,11 @@
                 case 'C+': return 2.3;
                 case 'C': return 2.0;
                 case 'C-': return 1.7;
-                case 'D+': return 1.3
+                case 'D+': return 1.3;
+                case 'D': return 1.0;
+                case 'D-': return 0.7;
+                case 'F': return 0.0;
+                default: return 0; // If no valid grade is selected
+            }
+        }
+    </script>
