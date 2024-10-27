@@ -71,11 +71,11 @@
         }
 
         .delete-row {
-            background: none; /* No background color */
-            color: red; /* Red text color */
-            font-weight: bold; /* Bold text */
-            border: none; /* Remove border */
-            cursor: pointer; /* Pointer cursor */
+            background: none;
+            color: red;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
         }
 
         #gpaDisplay {
@@ -88,8 +88,8 @@
         select, input[type="number"], input[type="text"] {
             width: 90%;
             padding: 8px;
-            background-color: #ffffff; /* Changed to white */
-            color: #333; /* Text color for better visibility */
+            background-color: #ffffff;
+            color: #333;
             border: 1px solid #555;
             border-radius: 5px;
         }
@@ -99,7 +99,7 @@
         }
 
         th {
-            background-color: #DDA0DD; /* Light purple color */
+            background-color: #DDA0DD;
             color: white;
         }
 
@@ -200,7 +200,7 @@
                     checkbox.checked = false;
                 }
             });
-            document.getElementById('gpaDisplay').textContent = 'Your GPA: 0.00'; // Reset GPA display
+            document.getElementById('gpaDisplay').textContent = 'Your GPA: 0.00';
         }
 
         function calculateGPA() {
@@ -214,7 +214,7 @@
                 const grade = row.querySelector('.course-grade').value;
                 const gradeValue = convertGradeToPoints(grade);
 
-                if (checkbox.checked) {
+                if (checkbox.checked && gradeValue !== null) {
                     totalCredits += credits;
                     totalPoints += gradeValue * credits;
                 }
@@ -239,9 +239,9 @@
                 case 'D': return 1.0;
                 case 'D-': return 0.7;
                 case 'F': return 0.0;
-                default: return 0; // Return 0 for unselected grades
+                default: return null;
             }
         }
     </script>
-</body
-
+</body>
+</html>
