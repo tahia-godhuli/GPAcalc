@@ -5,38 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPA Calculator</title>
     <style>
-        /* Import Quicksand font */
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
-
         /* Global Styles */
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://www.solidbackgrounds.com/images/950x350/950x350-lilac-solid-color-background.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
+            background-color: #121212; /* Dark background */
+            color: #ffffff;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #333;
         }
 
         #container {
-            background-color: #ffffff;
+            background-color: #1f1f1f; /* Dark navy-blue background */
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             width: 90%;
             max-width: 800px;
             text-align: center;
         }
 
         h1 {
-            font-family: 'Quicksand', sans-serif;
-            color: #6A0DAD;
+            color: #007bff; /* Navy blue heading */
             margin-bottom: 20px;
         }
 
@@ -47,73 +40,63 @@
         }
 
         th, td {
-            padding: 10px;
+            padding: 15px;
             text-align: center;
-            border: 1px solid #d1d1d1;
-            color: #333;
-            width: 20%;
+            border: 1px solid #555; /* Border between rows */
+            color: #ffffff;
         }
 
         button {
-            padding: 8px 15px;
-            margin: 8px 4px;
-            background-color: #D8BFD8; /* Light purple */
-            color: #333;
+            padding: 12px 24px;
+            margin: 10px 5px;
+            background-color: #007bff; /* Navy blue button */
+            color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
-            transition: background-color 0.2s;
         }
 
         button:hover {
-            background-color: #DDA0DD; /* Slightly darker purple */
+            background-color: #0056b3; /* Darker blue on hover */
         }
 
         .delete-row {
-            background: none; /* Remove background */
-            color: red; /* Set text color to red */
-            font-size: 20px; /* Increase font size for better visibility */
-            border: none; /* Remove border */
-            cursor: pointer; /* Change cursor to pointer */
+            background-color: #dc3545; /* Red for delete button */
         }
 
         .delete-row:hover {
-            text-decoration: underline; /* Add underline on hover */
+            background-color: #b12a36; /* Darker red on hover */
         }
 
         #gpaDisplay {
-            font-size: 22px;
-            color: #6A0DAD;
+            font-size: 24px;
+            color: #00ff7f; /* Bright green for GPA */
             margin-top: 20px;
         }
 
         select, input[type="number"], input[type="text"] {
-            width: 90%;
-            padding: 8px;
-            background-color: #fafafa;
-            color: #333;
-            border: 1px solid #d1d1d1;
-            border-radius: 5px;
+            width: 100%;
+            padding: 10px;
+            background-color: #333; /* Dark textboxes */
+            color: #fff;
+            border: 1px solid #555; /* Border for inputs */
+            border-radius: 4px;
         }
 
         input[type="checkbox"] {
-            transform: scale(1.3);
+            transform: scale(1.5);
         }
 
-        th {
-            background-color: #D8BFD8;
-            color: #333;
-        }
-
+        /* Hover effects for inputs */
         select:hover, input[type="number"]:hover, input[type="text"]:hover {
-            border-color: #6A0DAD;
+            border-color: #007bff; /* Highlight input border on hover */
         }
 
-        /* Styles for the Calculate GPA button */
-        .calculate-gpa {
-            padding: 12px 20px; /* Increased padding */
-            font-size: 16px; /* Increased font size */
+        /* Styling the table header */
+        th {
+            background-color: #007bff; /* Navy blue for header */
+            color: white;
         }
     </style>
 </head>
@@ -133,11 +116,10 @@
             <tbody>
                 <tr>
                     <td><input type="checkbox" class="select-row"></td>
-                    <td><input type="text" class="course-name" placeholder="Course"></td>
-                    <td><input type="number" class="course-credits" min="0" placeholder="Credits"></td>
+                    <td><input type="text" class="course-name"></td>
+                    <td><input type="number" class="course-credits" min="0"></td>
                     <td>
                         <select class="course-grade">
-                            <option value="">--Select--</option>
                             <option value="A+">A+</option>
                             <option value="A">A</option>
                             <option value="A-">A-</option>
@@ -158,7 +140,7 @@
             </tbody>
         </table>
         <button onclick="addRow()">Add Row</button>
-        <button class="calculate-gpa" onclick="calculateGPA()">Calculate GPA</button>
+        <button onclick="calculateGPA()">Calculate GPA</button>
         <button onclick="resetTable()">Reset</button>
         <div id="gpaDisplay">Your GPA: 0.00</div>
     </div>
@@ -167,13 +149,13 @@
         function addRow() {
             const table = document.getElementById('gpaTable').getElementsByTagName('tbody')[0];
             const newRow = table.insertRow();
+
             newRow.innerHTML = `
                 <td><input type="checkbox" class="select-row"></td>
-                <td><input type="text" class="course-name" placeholder="Course"></td>
-                <td><input type="number" class="course-credits" min="0" placeholder="Credits"></td>
+                <td><input type="text" class="course-name"></td>
+                <td><input type="number" class="course-credits" min="0"></td>
                 <td>
                     <select class="course-grade">
-                        <option value="">--Select--</option>
                         <option value="A+">A+</option>
                         <option value="A">A</option>
                         <option value="A-">A-</option>
@@ -199,20 +181,15 @@
         }
 
         function resetTable() {
-            const table = document.getElementById('gpaTable').getElementsByTagName('tbody')[0];
-            const rows = table.getElementsByTagName('tr');
-
-            // Remove all rows except the first one
-            while (rows.length > 1) {
-                table.deleteRow(1);
-            }
-
-            // Reset the first row input fields
-            const firstRow = rows[0];
-            firstRow.querySelector('.course-name').value = '';
-            firstRow.querySelector('.course-credits').value = '';
-            firstRow.querySelector('.course-grade').value = '';
-            firstRow.querySelector('.select-row').checked = false;
+            const rows = document.querySelectorAll('#gpaTable tbody tr');
+            rows.forEach(row => {
+                const checkbox = row.querySelector('.select-row');
+                if (checkbox.checked) {
+                    row.querySelector('.course-name').value = '';
+                    row.querySelector('.course-credits').value = '';
+                    row.querySelector('.course-grade').value = 'A+';
+                }
+            });
         }
 
         function calculateGPA() {
@@ -222,18 +199,18 @@
             const rows = document.querySelectorAll('#gpaTable tbody tr');
             rows.forEach(row => {
                 const checkbox = row.querySelector('.select-row');
-                const credits = parseFloat(row.querySelector('.course-credits').value) || 0;
+                const credits = parseFloat(row.querySelector('.course-credits').value);
                 const grade = row.querySelector('.course-grade').value;
                 const gradeValue = convertGradeToPoints(grade);
 
-                if (checkbox.checked) {
+                if ((!isNaN(credits) && checkbox.checked) || (!checkbox.checked && !isNaN(credits))) {
                     totalCredits += credits;
                     totalPoints += gradeValue * credits;
                 }
             });
 
             const gpa = totalPoints / totalCredits;
-            document.getElementById('gpaDisplay').textContent = !isNaN(gpa) && totalCredits > 0 ? `Your GPA: ${gpa.toFixed(2)}` : "Your GPA: 0.00";
+            document.getElementById('gpaDisplay').textContent = isNaN(gpa) ? "Your GPA: 0.00" : `Your GPA: ${gpa.toFixed(2)}`;
         }
 
         function convertGradeToPoints(grade) {
@@ -243,5 +220,17 @@
                 case 'A-': return 3.7;
                 case 'B+': return 3.3;
                 case 'B': return 3.0;
-                case 'B-': return 
-
+                case 'B-': return 2.7;
+                case 'C+': return 2.3;
+                case 'C': return 2.0;
+                case 'C-': return 1.7;
+                case 'D+': return 1.3;
+                case 'D': return 1.0;
+                case 'D-': return 0.7;
+                case 'F': return 0.0;
+                default: return 0;
+            }
+        }
+    </script>
+</body>
+</html>
