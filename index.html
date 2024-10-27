@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPA Calculator</title>
     <style>
+        /* Import Quicksand font */
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
 
+        /* Global Styles */
         body {
             font-family: Arial, sans-serif;
             background-image: url('https://wallpapers.com/images/high/lavender-aesthetic-laptop-q9lku1ylo9m6frut.webp');
@@ -50,7 +52,7 @@
             text-align: center;
             border: 1px solid #555;
             color: #333;
-            width: 20%;
+            width: 25%; /* Adjusted width */
         }
 
         button {
@@ -114,10 +116,10 @@
             <thead>
                 <tr>
                     <th>Select</th>
-                    <th>Course Name (Optional)</th>
+                    <th>Course Name</th>
                     <th>Credits</th>
                     <th>Grade</th>
-                    <th>Remove</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -150,7 +152,7 @@
         <button onclick="addRow()">Add Row</button>
         <button onclick="calculateGPA()">Calculate GPA</button>
         <button onclick="resetTable()">Reset</button>
-        <div id="gpaDisplay"> GPA: 0.00</div>
+        <div id="gpaDisplay">Your GPA: 0.00</div>
     </div>
 
     <script>
@@ -244,4 +246,5 @@
     </script>
 </body>
 </html>
+
 
