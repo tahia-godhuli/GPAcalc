@@ -115,7 +115,7 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th>Course Name</th>
+                    <th>Course Name (Optional)</th>
                     <th>Credits</th>
                     <th>Grade</th>
                     <th></th>
@@ -200,7 +200,7 @@
                     checkbox.checked = false;
                 }
             });
-            document.getElementById('gpaDisplay').textContent = 'Your GPA: 0.00';
+            document.getElementById('gpaDisplay').textContent = 'GPA: 0.00';
         }
 
         function calculateGPA() {
@@ -221,7 +221,7 @@
             });
 
             const gpa = totalCredits > 0 ? totalPoints / totalCredits : 0;
-            document.getElementById('gpaDisplay').textContent = `Your GPA: ${gpa.toFixed(2)}`;
+            document.getElementById('gpaDisplay').textContent = `GPA: ${gpa.toFixed(2)}`;
         }
 
         function convertGradeToPoints(grade) {
